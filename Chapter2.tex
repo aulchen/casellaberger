@@ -68,33 +68,26 @@ implying
 &=(a-1)!(b-1)!{n+a+b-1 \choose a+b-1}
 \end{align}
 
-We first calculate the mean, $E(X)$.
+further implying that the probability mass function can be rewritten as
 
-\begin{align*}
-E(X) &=
-\sum_{k=0}^n
-\frac{ka}{k+a}
-\frac{{n \choose k} {a+b-1 \choose a}}
-{{n+a+b-1 \choose k+a}} \\
-&= \sum_{k=1}^n
-\frac{ka}{k+a}
-\frac{{n \choose k} {a+b-1 \choose a}}
-{{n+a+b-1 \choose k+a}}
-\end{align*}
+\begin{align}
+P(Y=k) &=
+\frac{n!(a+b-1)!}{(a-1)!(b-1)!(n+a+b-1)!} \frac{(n+b-k-1)!(k+a-1)!}{(n-k)!k!} \\
+&= \alpha \frac{(n+b-k-1)!(k+a-1)!}{(n-k)!k!}
+\end{align}
 
-because the $k=1$ term is zero. Rewriting the $k{n \choose k}$,
+where $\alpha := \frac{n!(a+b-1)!}{(a-1)!(b-1)!(n+a+b-1)!}$ and doesn't depend on $k$. We first calculate the mean, $E(X)$.
 
-\[
-k{n \choose k} = k \frac{n!}{(n-k)!k!} = \frac{n!}{(n-k)!(k-1)!} = n\frac{(n-1)!}{(n-k)!(k-1)!} = n {n-1 \choose k-1}
-\]
+\begin{align}
+E(X) &= \alpha \sum_{k=0}^n
+k \frac{(n+b-k-1)!(k+a-1)!}{(n-k)!k!} \\
+\label{2_29KTermZero}
+&= \alpha \sum_{k=1}^n
+k \frac{(n+b-k-1)!(k+a-1)!}{(n-k)!k!} \\
+&= \alpha \sum_{k=1}^n
+\frac{(n+b-k-1)!(k+a-1)!}{(n-k)!(k-1)!}
+\end{align}
 
-implies
-
-\begin{align*}
-E(X) = \sum_{k=1}^n
-\frac{a}{k+a}
-\frac{{n-1 \choose k-1} {a+b-1 \choose a}}
-{{n+a+b-1 \choose k+a}}
-\end{align*}
+where Equation \ref{2_29KTermZero} follows from the $k=0$ term being zero. 
 
 \end{document}
