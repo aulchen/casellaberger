@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\diam}{\text{diam}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+\author{Arthur Chen}
+\title{Casella Berger Chapter 2}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 2.29}
+
+\subsection*{Part c}
+
+A nasty discrete distribution is the beta-binomial, with pmf
+
+\[
+P(X=k) = \frac{a}{k+a}
+\frac{{n \choose k} {a+b-1 \choose a}}
+{{n+a+b-1 \choose k+a}}
+\]
+
+where $n$, $a$, and $b$ are integers, and $y = 0, 1, 2 \dots n$. Use factorial moments to calculate the variance of the beta-binomial.
+
+Note that being a probability distribution implies that
+
+\[
+\sum_{k=0}^n \frac{1}{k+a}
+\frac{{n \choose k}}{{n+a+b-1 \choose k+a}}
+=
+[a {a+b-1 \choose a}]^{-1}
+=
+\frac{(a-1)!(b-1)!}{(a+b-1)!}
+\]
+
+Furthermore, expanding the binomial coefficients gives
+
+\begin{align*}
+\frac{1}{k+a}
+\frac{{n \choose k}}{{n+a+b-1 \choose k+a}}
+&=
+\frac{\frac{n!}{(n-k)!k!}}
+{
+(k+a)
+\frac{(n+a+b-1)!}{(n+b-k-1)!(k+a)!}
+} \\
+&=
+\frac{(n+b-k-1)!(k+a-1)!}{(n-k)!k!}
+\frac{n!}{(n+a+b-1)!}
+\end{align*}
+
+implying
+
+\begin{align}
+\sum_{k=0}^n \frac{(n+b-k-1)!(k+a-1)!}{(n-k)!k!}
+&=\frac{(a-1)!(b-1)!(n+a+b-1)!}{n!(a+b-1)!} \\
+&=(a-1)!(b-1)!{n+a+b-1 \choose a+b-1}
+\end{align}
+
+We first calculate the mean, $E(X)$.
+
+\begin{align*}
+E(X) &=
+\sum_{k=0}^n
+\frac{ka}{k+a}
+\frac{{n \choose k} {a+b-1 \choose a}}
+{{n+a+b-1 \choose k+a}} \\
+&= \sum_{k=1}^n
+\frac{ka}{k+a}
+\frac{{n \choose k} {a+b-1 \choose a}}
+{{n+a+b-1 \choose k+a}}
+\end{align*}
+
+because the $k=1$ term is zero. Rewriting the $k{n \choose k}$,
+
+\[
+k{n \choose k} = k \frac{n!}{(n-k)!k!} = \frac{n!}{(n-k)!(k-1)!} = n\frac{(n-1)!}{(n-k)!(k-1)!} = n {n-1 \choose k-1}
+\]
+
+implies
+
+\begin{align*}
+E(X) = \sum_{k=1}^n
+\frac{a}{k+a}
+\frac{{n-1 \choose k-1} {a+b-1 \choose a}}
+{{n+a+b-1 \choose k+a}}
+\end{align*}
+
+\end{document}
