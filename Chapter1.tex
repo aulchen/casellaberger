@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\diam}{\text{diam}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+\author{Arthur Chen}
+\title{Casella Berger Chapter 1}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 13}
+
+If $P(A) = \frac{1}{3}$ and $P(B^C) = \frac{1}{4}$, can $A$ and $B$ be disjoint? Explain.
+
+No, $A$ and $B$ can not be disjoint. $P(B) = \frac{3}{4}$. If $A$ and $B$ are disjoint, then $P(A \cup B) = P(A) + P(B) = \frac{1}{3} + \frac{3}{4} = \frac{13}{12}$. However, this contradicts the axiom that the probability of an event is at most one.
+
+\section*{Problem 18}
+
+If $n$ balls are placed at random into $n$ cells, find the probability that exactly one cell remains empty.
+
+Looking at ordered arrangements, each ball can go into $n$ cells, so there are $n^n$ ordered arrangements. If exactly one cell remains empty, there is one cell with no balls, one cell with two balls, and $n-2$ cells with exactly one ball. There are $\binom{n}{2}$ ways to choose the two cells with no balls and two balls, and $n(n-1)$ ordered ways to put two balls into the cell with two balls. There are $(n-2)!$ ways to choose the balls that go into the cells with one ball. Thus by counting,
+
+\[
+P = \frac{\binom{n}{2} n!}{n^n}
+\]
+
+\section*{Problem 22}
+
+\subsection*{Part a}
+
+In a draft lottery containing the 366 days of the year (including February 29th), what is the probability that the first 180 days drawn (without replacement) are evenly distributed among the 12 months?
+
+There are $\binom{366}{180}$ unordered ways to choose the first 180 days of the year that appear in the draft lottery. If the days are evenly distributed among the 12 months, there are 15 days from January, 15 from February, etc. There are $\binom{31}{15}$ ways to choose the 15 days from January, $\binom{29}{15}$ ways to choose the 15 days from February, etc. By counting,
+
+\[
+P = \frac{\binom{31}{15}^7 \binom{30}{15}^4 \binom{29}{15}}{\binom{366}{180}}
+\approx 1.67 \times 10^{-9}
+\]
+
+\subsection*{Part b}
+
+What is the probability that the first 30 days drawn contain none from September?
+
+There are $\binom{366}{30}$ ways to draw the first 30 days unordered without replacement, and $\binom{336}{30}$ ways to draw those first 30 days unordered without replacement from days outside of September. Thus
+
+\[
+P = \frac{\binom{336}{30}}{\binom{366}{30}}
+\]
+
+\end{document}
